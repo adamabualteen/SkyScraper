@@ -1,38 +1,31 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from bs4 import BeautifulSoup
+import requests
+import json
 
-# User inputs (Using static inputs for now for testing)
-depart_city = "CLE" #input("Enter the departing city: ")
-arrival_city = "TPA" #input("Enter the arrival city: ")
-depart_date = "2023-05-09" #input("Enter the depart date (YYYY-MM-DD): ")
-return_date = "2023-05-14" #input("Enter the return date (YYYY-MM-DD): ")
+API_KEY = "34f2de9890msh7a926fcb0807e79p1ea45djsnb0bc9330aa86"
 
-# Use Selenium to open the Kayak website
-kayak = 'https://www.kayak.com/flights/{}-{}/{}/{}'.format(depart_city, arrival_city, depart_date, return_date)
-driver = webdriver.Chrome() 
-driver.get(kayak)
-WebDriverWait(driver, 60)
+def get_cheapest_flight(arrival_city, departure_city, departure_date):
+    url = "https://priceline-com-provider.p.rapidapi.com/v2/flight/departures"
 
-# find the list of flights
-flights = driver.find_elements(By.CLASS_NAME, "resultWrapper")
+    querystring = {"adults":"1","departure_date":departure_date,"sid":"iSiX639","origin_airport_code":departure_city,"destination_airport_code":arrival_city}
 
-list_prices = []
-list_airlines = []
+    headers = {
+        "X-RapidAPI-Key": API_KEY,
+        "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com"
+    }
 
-for WebElement in flights:
-    elementHTML = WebElement.get_attribute('outerHTML')
-    elementSoup = BeautifulSoup(elementHTML, 'html.parser')
+    response = requests.request("GET", url, headers=headers, params=querystring)
 
-    #find prices
-    temp_price = elementSoup.find("div", {"class": 'col-price result-column js-no-dtog'})
-    price = temp_price.find("span", {"class": "price-text"})
-    list_prices.append(price.text)
+    data = json.loads(response.text)
 
-    #find airline name
-    airline = elementSoup.find("div", {"dir": "ltr"}).text
-    list_airlines.append(airline)
+    return data["getAirFlightDepartures"]["results"]["result"]["itinerary_data"]["itinerary_0"]["price_details"]["baseline_total_fare"]
 
-print(*list_airlines)
-print(*list_prices)
+# Prompt the user to input the departure city, arrival city, and departure date
+departure_city = input("Enter the departure city (Airport Code): ")
+arrival_city = input("Enter the arrival city (Airport Code): ")
+departure_date = input("Enter the departure date (YYYY-MM-DD): ")
+
+# Call the function to retrieve the cheapest flight
+cheapest_flight_price = get_cheapest_flight(arrival_city, departure_city, departure_date)
+
+# Output the result
+print("The cheapest flight from " + departure_city + " to " + arrival_city + " departing on " + departure_date + " is $" + str(cheapest_flight_price))
