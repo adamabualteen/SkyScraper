@@ -17,15 +17,19 @@ def get_cheapest_flight(arrival_city, departure_city, departure_date):
 
     data = json.loads(response.text)
 
-    return data["getAirFlightDepartures"]["results"]["result"]["itinerary_data"]["itinerary_0"]["price_details"]["baseline_total_fare"]
+    airline = data["getAirFlightDepartures"]["results"]["result"]["itinerary_data"]["itinerary_0"]["slice_data"]["slice_0"]["airline"]["name"]
+    price = data["getAirFlightDepartures"]["results"]["result"]["itinerary_data"]["itinerary_0"]["price_details"]["baseline_total_fare"]
 
-# Prompt the user to input the departure city, arrival city, and departure date
+    return airline, price
+    
+
+# Prompt the user to input the departure city, arrival city, and departure date.
 departure_city = input("Enter the departure city (Airport Code): ")
 arrival_city = input("Enter the arrival city (Airport Code): ")
 departure_date = input("Enter the departure date (YYYY-MM-DD): ")
 
-# Call the function to retrieve the cheapest flight
-cheapest_flight_price = get_cheapest_flight(arrival_city, departure_city, departure_date)
+# Call the function to retrieve the cheapest flight and airline
+airline, price = get_cheapest_flight(arrival_city, departure_city, departure_date)
 
 # Output the result
-print("The cheapest flight from " + departure_city + " to " + arrival_city + " departing on " + departure_date + " is $" + str(cheapest_flight_price))
+print("The cheapest flight from " + departure_city + " to " + arrival_city + " departing on " + departure_date + " is $" + str(price) + " on " + str(airline))
