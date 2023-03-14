@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+    <title>Cheapest Flight Finder</title>
+</head>
+<body>
+    <header>
+        <h1>Cheapest Flight Finder</h1>
+    </header>
+    <main>
+        <form id="flight-search-form">
+            <label for="departure_city">Enter the departure city (Airport Code):</label>
+            <input type="text" id="departure_city" required>
+            <label for="arrival_city">Enter the arrival city (Airport Code):</label>
+            <input type="text" id="arrival_city" required>
+            <label for="departure_date">Enter the departure date (YYYY-MM-DD):</label>
+            <input type="date" id="departure_date" required>
+            <button type="submit">Find Cheapest Flight</button>
+        </form>
+        <section id="result">
+            <p id="output"></p>
+        </section>
+    </main>
+</body>
+</html>
