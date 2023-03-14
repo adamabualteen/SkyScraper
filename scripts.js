@@ -21,8 +21,22 @@ async function fetchCheapestFlight(departure_city, arrival_city, departure_date)
     return await response.json();
 }
 
+async function validateRecaptcha() {
+    const captchaResponse = document.querySelector("[name='g-recaptcha-response']").value;
+
+    if (!captchaResponse) {
+        alert("Please complete the reCAPTCHA.");
+        return false;
+    }
+
+    return true;
+}
+
 document.getElementById("flight-search-form").addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    const isCaptchaValid = await validateRecaptcha();
+    if (!isCaptchaValid) return;
 
     const departure_city = document.getElementById("departure_city").value;
     const arrival_city = document.getElementById("arrival_city").value;
@@ -35,3 +49,4 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
 
     output.textContent = `The cheapest flight from ${departure_city} to ${arrival_city} departing on ${departure_date} is $${price} on ${airline}`;
 });
+
