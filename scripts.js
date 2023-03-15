@@ -38,7 +38,7 @@ async function validateRecaptcha() {
 async function displayResult(airline, price, departureCity, arrivalCity, departureDate, flightClass) {
     const googleFlightsUrl = `https://www.google.com/flights?hl=en#flt=${departureCity}.${arrivalCity}.${departureDate}*${arrivalCity}.${departureCity}.*;c:USD;e:1;sd:1;t:f;tt:o;sp:.${flightClass}`;
 
-    document.getElementById("output").innerHTML = `The cheapest ${flightClass} class flight from ${departureCity} to ${arrivalCity} departing on ${departureDate} is $${price} on ${airline}. <a href="${googleFlightsUrl}" target="_blank">Click here to view the ticket</a>.`;
+    document.getElementById("output").innerHTML = `The cheapest ${flightClass} class flight from ${departureCity} to ${arrivalCity} departing on ${departureDate} is approximately $${price} on ${airline}. <a href="${googleFlightsUrl}" target="_blank">Click here to search for the ticket on Google Flights</a>.`;
 }
 
 document.getElementById("flight-search-form").addEventListener("submit", async (event) => {
