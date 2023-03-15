@@ -35,10 +35,13 @@ async function validateRecaptcha() {
     return true;
 }
 
-async function displayResult(airline, price, departureCity, arrivalCity, departureDate, flightClass) {
-    const googleFlightsUrl = `https://www.google.com/flights?hl=en#flt=${departureCity}.${arrivalCity}.${departureDate}*${arrivalCity}.${departureCity}.*;c:USD;e:1;sd:1;t:f;tt:o;sp:.${flightClass}`;
+function displayResult(airline, price, departureCity, arrivalCity, departureDate, flightClass) {
+    document.getElementById("output").textContent = `The cheapest ${flightClass} class flight from ${departureCity} to ${arrivalCity} departing on ${departureDate} is $${price} on ${airline}.`;
+}
 
-    document.getElementById("output").innerHTML = `The cheapest ${flightClass} class flight from ${departureCity} to ${arrivalCity} departing on ${departureDate} is approximately $${price} on ${airline}. <a href="${googleFlightsUrl}" target="_blank">Click here to search for the ticket on Google Flights</a>.`;
+function displayGoogleFlightsLink(departureCity, arrivalCity, departureDate, flightClass) {
+    const googleFlightsUrl = `https://www.google.com/flights?hl=en#flt=${departureCity}.${arrivalCity}.${departureDate}*${arrivalCity}.${departureCity}.*;c:USD;e:1;sd:1;t:f;tt:o;sp:.${flightClass}`;
+    document.getElementById("google-flights-link").innerHTML = `<a href="${googleFlightsUrl}" target="_blank">Click here to search for the ticket on Google Flights</a>`;
 }
 
 document.getElementById("flight-search-form").addEventListener("submit", async (event) => {
@@ -56,5 +59,6 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const airline = data.getAirFlightDepartures.results.result.itinerary_data.itinerary_0.slice_data.slice_0.airline.name;
     const price = data.getAirFlightDepartures.results.result.itinerary_data.itinerary_0.price_details.baseline_total_fare;
 
-    await displayResult(airline, price, departure_city, arrival_city, departure_date, travel_class);
+    displayResult(airline, price, departure_city, arrival_city, departure_date, travel_class);
+    displayGoogleFlightsLink(departure_city, arrival_city, departure_date, travel_class);
 });
