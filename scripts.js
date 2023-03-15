@@ -44,6 +44,14 @@ function displayGoogleFlightsLink(departureCity, arrivalCity, departureDate, fli
     document.getElementById("google-flights-link").innerHTML = `<a href="${googleFlightsUrl}" target="_blank">Click here to search for the ticket on Google Flights</a>`;
 }
 
+function showLoadingMessage() {
+    document.getElementById("loading-message").textContent = "Finding flight...";
+}
+
+function hideLoadingMessage() {
+    document.getElementById("loading-message").textContent = "";
+}
+
 document.getElementById("flight-search-form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -55,10 +63,14 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const departure_date = document.getElementById("departure_date").value;
     const travel_class = document.getElementById("travel_class").value;
 
+    showLoadingMessage();
+
     const data = await fetchCheapestFlight(departure_city, arrival_city, departure_date, travel_class);
     const airline = data.getAirFlightDepartures.results.result.itinerary_data.itinerary_0.slice_data.slice_0.airline.name;
     const price = data.getAirFlightDepartures.results.result.itinerary_data.itinerary_0.price_details.baseline_total_fare;
 
     displayResult(airline, price, departure_city, arrival_city, departure_date, travel_class);
     displayGoogleFlightsLink(departure_city, arrival_city, departure_date, travel_class);
+
+    hideLoadingMessage();
 });
