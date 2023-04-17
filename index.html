@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css?version=2">
     <script defer src="scripts.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <title>SkyScraper | Home</title>
+    <title>Cheapest Flight Finder</title>
 </head>
-
 <body>
-    <div class="color-overlay"></div>
     <header>
         <h1>SkyScraper</h1>
         <h3>A web application that attempts to streamline the flight booking process</h3>
@@ -31,27 +28,17 @@
             <input type="text" id="arrival_city" required>
             <label for="departure_date">Enter the departure date (YYYY-MM-DD):</label>
             <input type="date" id="departure_date" required>
-
-            <!-- <label for="flight-class">Flight class:</label>
-            <select id="flight-class" required>
-                <option value="">Select a class</option>
-                <option value="economy">Economy</option>
-                <option value="business">Business</option>
-                <option value="first">First class</option>
-            </select><br><br> -->
-
             <div class="g-recaptcha" data-sitekey="6LfCM5YlAAAAAB-dPHHAV4vFhQC5CPDIcfVyV1Ae"></div>
             <button type="submit">Find Cheapest Flight</button>
         </form>
         <section id="result">
             <p id="output"></p>
-            <p id="google-flights-link"></p>
             <p id="loading-message"></p>
         </section>
     </main>
+
     <footer>
         <p>&copy; <span id="currentYear"></span> Adam Abualteen, Ethan Couch, Maytham Fahda, and Steven Truong</p>
     </footer>
 </body>
-
 </html>

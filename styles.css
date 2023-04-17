@@ -5,7 +5,7 @@ html {
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f8ff;
-  /* background-image: url('cloud.jpg'); */
+  background-image: url("plane.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -25,7 +25,8 @@ body {
 }
 
 header {
-  background-color: #0072b1;
+  background-color: transparent;
+  background: none;
   padding: 20px;
   text-align: center;
 }
@@ -70,10 +71,11 @@ button:hover {
 
 .g-recaptcha {
   margin-bottom: 15px;
+  opacity: 0.7;
 }
 
 nav {
-  background-color: #333;
+  background-color: transparent;
   padding: 10px;
   text-align: center;
 }
@@ -129,7 +131,7 @@ nav a:hover {
 }
 
 footer {
-  background-color: #333;
+  background-color: transparent;
   color: white;
   padding: 10px;
   text-align: center;
@@ -140,4 +142,5 @@ footer {
 
 footer p {
   margin: 0;
+  background-color: transparent;
 }
