@@ -58,8 +58,8 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const arrival_city = document.getElementById("arrival_city").value;
     const departure_date = document.getElementById("departure_date").value;
     const flight_class = document.getElementById("flight_class").value;
-    const requested_currency = document.getElementById("requested_currency").value;
-    const flight_type = document.getElementById("flight_type").value;
+    //const requested_currency = document.getElementById("requested_currency").value;
+    //const flight_type = document.getElementById("flight_type").value;
 
     showLoadingMessage();
 
