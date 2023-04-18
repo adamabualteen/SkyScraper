@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Cheapest Flight Finder</title>
 </head>
+
 <body>
     <header>
         <h1>SkyScraper</h1>
@@ -26,13 +28,14 @@
             <input type="text" id="departure_city" required>
             <label for="arrival_city">Enter the arrival city (Airport Code):</label>
             <input type="text" id="arrival_city" required>
-            <label for="departure_date">Enter the departure date (YYYY-MM-DD):</label>
+            <label for="departure_date">Enter the departure date (MM-DD-YYYY):</label>
             <input type="date" id="departure_date" required>
             <div class="g-recaptcha" data-sitekey="6LfCM5YlAAAAAB-dPHHAV4vFhQC5CPDIcfVyV1Ae"></div>
             <button type="submit">Find Cheapest Flight</button>
         </form>
         <section id="result">
             <p id="output"></p>
+            <p id="google-flights-link"></p>
             <p id="loading-message"></p>
         </section>
     </main>

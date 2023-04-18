@@ -40,6 +40,12 @@ function hideLoadingMessage() {
     document.getElementById("loading-message").textContent = "";
 }
 
+function displayGoogleFlightsLink(departureCity, arrivalCity, departureDate) {
+    const googleFlightsUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${arrivalCity}%20from%20${departureCity}%20on%20${departureDate}`;
+    document.getElementById("google-flights-link").innerHTML = `<a href="${googleFlightsUrl}" target="_blank">Click here to search for the ticket on Google Flights</a>`;
+}
+
+
 document.getElementById("flight-search-form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -58,6 +64,10 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const output = document.getElementById("output");
 
     output.textContent = `The cheapest flight from ${departure_city} to ${arrival_city} departing on ${departure_date} is $${price} on ${airline}`;
+
+    displayGoogleFlightsLink(departure_city, arrival_city, departure_date);
+
     hideLoadingMessage();
+    
 });
 
