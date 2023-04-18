@@ -3,6 +3,7 @@ import json
 
 API_KEY = "34f2de9890msh7a926fcb0807e79p1ea45djsnb0bc9330aa86"
 
+# Defines the get_cheapest_flight function by querying the priceline API in combination with user-inputted parameters.
 def get_cheapest_flight(arrival_city, departure_city, departure_date):
     url = "https://priceline-com-provider.p.rapidapi.com/v2/flight/departures"
 
