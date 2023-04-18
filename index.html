@@ -30,10 +30,10 @@
             <input type="text" id="arrival_city" required>
             <label for="departure_date">Enter the departure date (MM-DD-YYYY):</label>
             <input type="date" id="departure_date" required>
-            <label for="flight-type">Select flight type:</label>
-            <input type="radio" id="round-trip" name="flight-type" value="round-trip" checked>
+            <label for="flight_type">Select flight type:</label>
+            <input type="radio" id="round-trip" name="flight_type" value="round-trip" checked style="display: flex;">
             <label for="round-trip">Round-Trip</label>
-            <input type="radio" id="one-way" name="flight-type" value="one-way">
+            <input type="radio" id="one-way" name="flight_type" value="one-way" style="display: flex;">
             <label for="one-way">One-Way</label>
             <label for="currency">Select currency to display flight price in:</label>
             <select id="currency">
@@ -54,8 +54,8 @@
               <option value="TRY">Turkish Lira (TRY)</option>
             </select>
             <br>
-            <label for="flight-class">Select class of flight:</label>
-            <select id="flight-class">
+            <label for="flight_class">Select class of flight:</label>
+            <select id="flight_class">
               <option value="economy" selected>Economy</option>
               <option value="business">Business</option>
               <option value="first-class">First</option>
