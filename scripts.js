@@ -8,7 +8,7 @@ async function fetchCheapestFlight(departure_city, arrival_city, departure_date,
         origin_airport_code: departure_city,
         destination_airport_code: arrival_city,
         cabin_class: flight_class,
-        requested_currency: requested_currency
+        //requested_currency: requested_currency
     };
     url.search = new URLSearchParams(params);
 
