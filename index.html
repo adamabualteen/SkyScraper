@@ -35,6 +35,31 @@
             <label for="round-trip">Round-Trip</label>
             <input type="radio" id="one-way" name="flight-type" value="one-way">
             <label for="one-way">One-Way</label>
+            <label for="currency">Select currency to display flight price in:</label>
+            <select id="currency">
+              <option value="USD" selected>US Dollar (USD)</option>
+              <option value="EUR">Euro (EUR)</option>
+              <option value="GBP">British Pound (GBP)</option>
+              <option value="JPY">Japanese Yen (JPY)</option>
+              <option value="AUD">Australian Dollar (AUD)</option>
+              <option value="CAD">Canadian Dollar (CAD)</option>
+              <option value="CHF">Swiss Franc (CHF)</option>
+              <option value="CNY">Chinese Yuan (CNY)</option>
+              <option value="HKD">Hong Kong Dollar (HKD)</option>
+              <option value="NZD">New Zealand Dollar (NZD)</option>
+              <option value="RUB">Russian Ruble (RUB)</option>
+              <option value="SEK">Swedish Krona (SEK)</option>
+              <option value="SGD">Singapore Dollar (SGD)</option>
+              <option value="THB">Thai Baht (THB)</option>
+              <option value="TRY">Turkish Lira (TRY)</option>
+            </select>
+            <br>
+            <label for="flight-class">Select class of flight:</label>
+            <select id="flight-class">
+              <option value="economy" selected>Economy</option>
+              <option value="business">Business</option>
+              <option value="first-class">First</option>
+            </select>
             <div class="g-recaptcha" data-sitekey="6LfCM5YlAAAAAB-dPHHAV4vFhQC5CPDIcfVyV1Ae"></div>
             <button type="submit">Find Cheapest Flight</button>
         </form>
