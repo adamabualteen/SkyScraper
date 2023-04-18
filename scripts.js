@@ -68,7 +68,7 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const price = data.getAirFlightDepartures.results.result.itinerary_data.itinerary_0.price_details.baseline_total_fare;
     const output = document.getElementById("output");
 
-    output.textContent = `The cheapest flight from ${departure_city} to ${arrival_city} departing on ${departure_date}, under ${flight_class} Class is ${price} on ${airline}`;
+    output.textContent = `The cheapest flight from ${departure_city} to ${arrival_city} departing on ${departure_date}, under ${flight_class} Class is ${price} ${requested_currency} on ${airline}`;
 
     displayGoogleFlightsLink(departure_city, arrival_city, departure_date, flight_class);
 
