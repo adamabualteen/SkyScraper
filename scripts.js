@@ -58,8 +58,8 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const arrival_city = document.getElementById("arrival_city").value;
     const departure_date = document.getElementById("departure_date").value;
     const flight_class = document.getElementById("flight_class").value;
-    //const requested_currency = document.getElementById("requested_currency").value;
-    //const flight_type = document.getElementById("flight_type").value;
+    const requested_currency = document.getElementById("requested_currency").value;
+    const flight_type = document.getElementById("flight_type").value;
 
     showLoadingMessage();
 
@@ -68,7 +68,7 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const price = data.getAirFlightDepartures.results.result.itinerary_data.itinerary_0.price_details.baseline_total_fare;
     const output = document.getElementById("output");
 
-    output.textContent = `The cheapest flight from ${departure_city} to ${arrival_city} departing on ${departure_date}, under ${flight_class} Class is ${price} on ${airline}`;
+    output.textContent = `The cheapest flight from ${departure_city} to ${arrival_city} departing on ${departure_date}, under ${flight_class} Class is ${price}${requested_currency} on ${airline}`;
 
     displayGoogleFlightsLink(departure_city, arrival_city, departure_date, flight_class);
 
