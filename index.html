@@ -13,7 +13,7 @@
 <body>
     <header>
         <h1>SkyScraper</h1>
-        <h3>A web application that attempts to streamline the flight booking process</h3>
+        <h3>SkyScraper is here to help you streamline the flight booking process, all in one view. Comprehensive and simple.</h3>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -30,6 +30,11 @@
             <input type="text" id="arrival_city" required>
             <label for="departure_date">Enter the departure date (MM-DD-YYYY):</label>
             <input type="date" id="departure_date" required>
+            <label for="flight-type">Select flight type:</label>
+            <input type="radio" id="round-trip" name="flight-type" value="round-trip" checked>
+            <label for="round-trip">Round-Trip</label>
+            <input type="radio" id="one-way" name="flight-type" value="one-way">
+            <label for="one-way">One-Way</label>
             <div class="g-recaptcha" data-sitekey="6LfCM5YlAAAAAB-dPHHAV4vFhQC5CPDIcfVyV1Ae"></div>
             <button type="submit">Find Cheapest Flight</button>
         </form>
