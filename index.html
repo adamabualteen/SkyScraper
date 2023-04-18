@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css?version=2">
     <script defer src="scripts.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <title>Cheapest Flight Finder</title>
+    <title>SkyScraper</title>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
             <input type="radio" id="one-way" name="flight_type" value="one-way" style="display: flex;">
             <label for="one-way">One-Way</label>
             <label for="requested_currency">Select currency to display flight price in:</label>
-            <select id="requested_currency">
+            <select id="requested_currency" required>
               <option value="USD" selected>US Dollar (USD)</option>
               <option value="EUR">Euro (EUR)</option>
               <option value="GBP">British Pound (GBP)</option>

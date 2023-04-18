@@ -44,7 +44,7 @@ function hideLoadingMessage() {
 
 function displayGoogleFlightsLink(departureCity, arrivalCity, departureDate, flight_class) {
     const googleFlightsUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${arrivalCity}%20from%20${departureCity}%20on%20${departureDate}%20under%20${flight_class}%20Class`;
-    document.getElementById("google-flights-link").innerHTML = `<a href="${googleFlightsUrl}" target="_blank">Click here to search for the ticket on Google Flights</a>`;
+    document.getElementById("google-flights-link").innerHTML = `<a href="${googleFlightsUrl}" target="_blank">Purchase ticket with Google Flights</a>`;
 }
 
 
@@ -75,4 +75,5 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     hideLoadingMessage();
     
 });
+
 
