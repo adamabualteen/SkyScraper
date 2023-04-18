@@ -1,6 +1,9 @@
+const requested_currency = document.getElementById("requested_currency").value || "USD";
+
 async function fetchCheapestFlight(departure_city, arrival_city, departure_date, flight_class) {
     const API_KEY = "34f2de9890msh7a926fcb0807e79p1ea45djsnb0bc9330aa86";
     const url = new URL("https://priceline-com-provider.p.rapidapi.com/v2/flight/departures");
+    const currencyExchangeUrl = `https://priceline-com-provider.p.rapidapi.com/v1/currency/exchange?from=USD&to=${requested_currency}&amount=${requested_currency}`;
     const params = {
         adults: "1",
         departure_date: departure_date,
@@ -8,7 +11,7 @@ async function fetchCheapestFlight(departure_city, arrival_city, departure_date,
         origin_airport_code: departure_city,
         destination_airport_code: arrival_city,
         cabin_class: flight_class,
-        //requested_currency: requested_currency
+        requested_currency: requested_currency
     };
     url.search = new URLSearchParams(params);
 
@@ -58,7 +61,9 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const arrival_city = document.getElementById("arrival_city").value;
     const departure_date = document.getElementById("departure_date").value;
     const flight_class = document.getElementById("flight_class").value;
-    const requested_currency = document.getElementById("requested_currency").value;
+    const exchangeData = await response.json();
+    const exchangeRate = exchangeData.conversion_rate;
+    const convertedPrice = (price * exchangeRate).toFixed(2);
     //const flight_type = document.getElementById("flight_type").value;
 
     showLoadingMessage();
