@@ -22,8 +22,18 @@
             </nav>       
     </header>
     <main>
-        <h1>Contact</h1>
-        <p>The application must incorporate a 'Contact Us' UI element in order for consumers to express complaints or feedback.</p>
+        <div id="contact">
+            <h2 style ="color: #87CEEB;">Contact Us</h2>
+            <div id="contact-form">
+                <form method="POST" action="https://formspree.io/f/moqzkqbj">
+                    <input type="hidden" name="_subject" value="Contact request from skyScraper" />
+                    <input type="email" name="_replyto" placeholder="Your email" required>
+                    <textarea name="message" placeholder="Your message" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+            <!-- End #contact-form -->
+        </div>
     </main>
 
     <footer>
