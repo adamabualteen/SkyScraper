@@ -1,9 +1,7 @@
-const requested_currency = document.getElementById("requested_currency").value || "USD";
 
 async function fetchCheapestFlight(departure_city, arrival_city, departure_date, flight_class) {
     const API_KEY = "34f2de9890msh7a926fcb0807e79p1ea45djsnb0bc9330aa86";
     const url = new URL("https://priceline-com-provider.p.rapidapi.com/v2/flight/departures");
-    const currencyExchangeUrl = `https://priceline-com-provider.p.rapidapi.com/v1/currency/exchange?from=USD&to=${requested_currency}&amount=${requested_currency}`;
     const params = {
         adults: "1",
         departure_date: departure_date,
@@ -11,7 +9,6 @@ async function fetchCheapestFlight(departure_city, arrival_city, departure_date,
         origin_airport_code: departure_city,
         destination_airport_code: arrival_city,
         cabin_class: flight_class,
-        requested_currency: requested_currency
     };
     url.search = new URLSearchParams(params);
 
@@ -22,10 +19,9 @@ async function fetchCheapestFlight(departure_city, arrival_city, departure_date,
             "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
         },
     });
-
     return await response.json();
 }
-
+//Captcha Function
 async function validateRecaptcha() {
     const captchaResponse = document.querySelector("[name='g-recaptcha-response']").value;
 
@@ -61,18 +57,18 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const arrival_city = document.getElementById("arrival_city").value;
     const departure_date = document.getElementById("departure_date").value;
     const flight_class = document.getElementById("flight_class").value;
-    const exchangeData = await response.json();
-    const exchangeRate = exchangeData.conversion_rate;
-    const convertedPrice = (price * exchangeRate).toFixed(2);
+    const requested_currency = document.getElementById("requested_currency").value;
+    //const convertedPrice = (price * exchangeRate).toFixed(2);
     //const flight_type = document.getElementById("flight_type").value;
 
     showLoadingMessage();
 
     const data = await fetchCheapestFlight(departure_city, arrival_city, departure_date, flight_class);
+    //console.log(data);
     const airline = data.getAirFlightDepartures.results.result.itinerary_data.itinerary_0.slice_data.slice_0.airline.name;
     const price = data.getAirFlightDepartures.results.result.itinerary_data.itinerary_0.price_details.baseline_total_fare;
     const output = document.getElementById("output");
-
+    //console.log(data);
     output.textContent = `The cheapest flight from ${departure_city} to ${arrival_city} departing on ${departure_date}, under ${flight_class} Class is ${price} ${requested_currency} on ${airline}`;
 
     displayGoogleFlightsLink(departure_city, arrival_city, departure_date, flight_class);

@@ -31,10 +31,10 @@
             <label for="departure_date">Enter the departure date (MM-DD-YYYY):</label>
             <input type="date" id="departure_date" required>
             <label for="flight_type">Select flight type:</label>
-            <input type="radio" id="round-trip" name="flight_type" value="round-trip" checked style="display: flex;">
-            <label for="round-trip">Round-Trip</label>
-            <input type="radio" id="one-way" name="flight_type" value="one-way" style="display: flex;">
-            <label for="one-way">One-Way</label>
+            <select id="flight_type" required>
+                <option value="round-trip" selected>Round-Trip</option>
+                <option value="one-way">One-Way</option>
+              </select>
             <label for="requested_currency">Select currency to display flight price in:</label>
             <select id="requested_currency" required>
               <option value="USD" selected>US Dollar (USD)</option>
