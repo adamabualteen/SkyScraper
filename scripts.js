@@ -58,8 +58,18 @@ document.getElementById("flight-search-form").addEventListener("submit", async (
     const departure_date = document.getElementById("departure_date").value;
     const flight_class = document.getElementById("flight_class").value;
     const requested_currency = document.getElementById("requested_currency").value;
-    //const convertedPrice = (price * exchangeRate).toFixed(2);
-    //const flight_type = document.getElementById("flight_type").value;
+    //const convertedCanadian = 0.74 * USD
+    //const convertedEuro = 1.10 * USD
+    //const convertedJapan = 0.0075 * USD
+    //const convertedCHF = 1.12 * USD
+    //const convertedHKD = 0.13 * USD
+    //const convertedSEK = 0.097 * USD
+    //const convertedSing = 0.75 * USD
+    //const convertedTRY = 0.052 * USD
+    //const convertedGBP = 1.24 * USD  
+    //const convertedAUD = 0.67 * USD
+    //const convertedRUB = 0.012 * USD
+    //const convertedCNY = 0.15 * USD
 
     showLoadingMessage();
 
